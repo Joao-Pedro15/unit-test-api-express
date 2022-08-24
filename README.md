@@ -8,6 +8,13 @@
 ### MOCHA
 *Usado para estruturar nossos testes, usando describe e it como principais métodos. Além disso, ele suporta cobertura de testes assíncronos.*
 
+### SINON 
+*Bibliotéca que nos permite criar stubs, spies e mocks com qualquer framework de teste de unidade*
+
+### REWIRE
+*O rewire nos fornece funções de setter e getter para substituir as funções originais pelo que nós definimos*
+
+
 ## Hooks auxiliares do mocha
 
 ### Before
