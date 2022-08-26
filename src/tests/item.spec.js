@@ -43,6 +43,8 @@ describe('Testing /item endpoint', () => {
             .readItem('someRandomHash')
             .then((item) => {
                 expect(item).to.equal(sampleItemVal);
+            }).catch((err) => {
+                throw new Error('⚠️ Unexpected failure!')
             })
         })
     })
