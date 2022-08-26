@@ -37,5 +37,13 @@ describe('Testing /item endpoint', () => {
                 expect(err.message).to.equal('Invalid item id')
             })
         })
+
+        it('should succeed when called with hash', async () => {
+            itemController
+            .readItem('someRandomHash')
+            .then((item) => {
+                expect(item).to.equal(sampleItemVal);
+            })
+        })
     })
 })
