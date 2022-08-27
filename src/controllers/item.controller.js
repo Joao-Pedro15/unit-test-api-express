@@ -26,12 +26,23 @@ exports.readItem = async function (hash) {
     }
 }
  
+// Funcção privada. Não exportada!
+function getUniqueHash (item) {
+    if(!item) return null
+    const currentHash = item.hash
+    let newHash = nanoid(10)
+
+    while (newHash === currentHash) {
+        newHash = nanoid(10)
+    }
+    return newHash
+}
 
 exports.updateItemHash = async function (hash) {
     try {
         if(!hash) throw new Error('Incomplete arguments')
         let item = await Item.findOne({ hash })
-        item.hash = getUnitqueHash(item)
+        item.hash = getUniqueHash(item)
         return await item.save()
     } catch (error) {
         return Promise.reject(error)
