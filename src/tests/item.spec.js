@@ -50,4 +50,32 @@ describe('Testing /item endpoint', () => {
             })
         })
     })
+    describe('/PUT', () => {
+        let getUniqueHashStub, saveStub, result, sampleUpdatedItemVal;
+        const sampleUpdatedHash = '9876543219'
+
+        beforeEach(async () => {
+            // focefully restore sandbox to allow re-write of findOneStub
+            sandbox.restore()
+
+            //Stub to mocj getUniqueHash´s Functionality
+            getUniqueHashStub = sandbox.stub().returns(sampleUpdatedHash)
+
+            sampleUpdatedItemVal = {
+                ...sampleItemVal,
+                hash: sampleUpdatedHash
+            }
+            // save stub to return updated item
+            saveStub = sandbox.stub().returns(sampleUpdatedItemVal)
+            
+            //make findOneStub return save() method in addition to sampleItemVal
+            findOneStub = sandbox.stub(mongoose.Model, 'findOne').resolves({
+                ...sampleItemVal,
+                save: saveStub
+            })
+
+            // Use rewire to modify itemControllers´s private method getUniqueHash
+            itemController.__set__('getUniqueHash', getUniqueHashStub)
+        })  
+    })
 })
