@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "test": "mocha --watch ./src/tests/*.spec.js"
+    "test": "mocha ./src/tests/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,6 @@
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "mongoose": "^6.5.2",
-    "nanoid": "^4.0.0"
+    "nanoid": "^3.3.1"
   }
 }
