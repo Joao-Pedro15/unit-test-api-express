@@ -1,8 +1,10 @@
-const { expect } = require('chai')
+const chai = require('chai')
 const { describe, it, before, beforeEach, after, afterEach } = require('mocha')
 const sinon = require('sinon')
 const mongoose = require('mongoose')
 const rewire = require('rewire')
+chai.use(require('sinon-chai'))
+const expect = chai.expect
 
 const sandbox = sinon.createSandbox()
 let itemController = rewire('../controllers/item.controller')
@@ -10,14 +12,14 @@ let itemController = rewire('../controllers/item.controller')
 describe('Testing /item endpoint', () => {
     let sampleItemVal
     let findOneStub
-    let itemController = rewire('../controllers/item.controller')
+    const sampleUniqueHash = '1234567891'
 
     beforeEach(() => {
         sampleItemVal = {
             name: 'sample item',
             price: 10,
             rating: '5',
-            hash: '123456891'
+            hash: sampleUniqueHash
         }
         findOneStub = sandbox.stub(mongoose.Model, 'findOne').resolves(sampleItemVal)
     });
