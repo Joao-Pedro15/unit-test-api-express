@@ -87,6 +87,13 @@ describe('Testing /item endpoint', () => {
                 expect(error.message).to.equal('Incomplete arguments')
             })
         })
+        it('should update item hash successfully', async () => {
+            result = await itemController.updateItemHash(sampleUniqueHash)
+            expect(findOneStub).to.have.been.calledWith({hash: sampleUniqueHash});
+            expect(findOneStub).to.have.been.calledOnce
+            expect(saveStub).to.have.been.calledOnce
+            expect(result).to.equal(sampleUpdatedItemVal)
+        })
 
         
     })
