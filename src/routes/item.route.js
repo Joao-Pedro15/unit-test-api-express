@@ -7,4 +7,9 @@ router.get('/test', async (req, res) => {
     return res.json(result)
 })
 
+router.put('/test', async (req, res) => {
+    const result = await itemController.updateItemHash('1233445894')
+    return res.json(result)
+})
+
 module.exports = router
