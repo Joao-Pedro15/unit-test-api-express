@@ -77,5 +77,17 @@ describe('Testing /item endpoint', () => {
             // Use rewire to modify itemControllers´s private method getUniqueHash
             itemController.__set__('getUniqueHash', getUniqueHashStub)
         })  
+        it('should throw invalid argument error', () => {
+            itemController
+            .updateItemHash()
+            .then(() => {
+                throw new Error('⚠️ Unexpected success!')
+            }).catch((error) => {
+                expect(result).to.be.instanceOf(Error)
+                expect(error.message).to.equal('Incomplete arguments')
+            })
+        })
+
+        
     })
 })
