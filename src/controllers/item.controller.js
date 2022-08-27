@@ -1,5 +1,6 @@
-const Item = require('../models/Item.model')
 const { nanoid } = require('nanoid')
+const Item = require('../models/Item.model')
+// const { nanoid } = require('nanoid')
 
 exports.createItem = async function (itemObj) {
     try{
@@ -22,6 +23,18 @@ exports.readItem = async function (hash) {
         return await Item.findOne({ hash })
     }catch(err){
         return Promise.reject(err)
+    }
+}
+ 
+
+exports.updateItemHash = async function (hash) {
+    try {
+        if(!hash) throw new Error('Incomplete arguments')
+        let item = await Item.findOne({ hash })
+        item.hash = getUnitqueHash(item)
+        return await item.save()
+    } catch (error) {
+        return Promise.reject(error)
     }
 }
 
