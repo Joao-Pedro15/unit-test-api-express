@@ -1,6 +1,5 @@
-const { nanoid } = require('nanoid')
 const Item = require('../models/Item.model')
-// const { nanoid } = require('nanoid')
+const { nanoid } = require('nanoid')
 
 exports.createItem = async function (itemObj) {
     try{
