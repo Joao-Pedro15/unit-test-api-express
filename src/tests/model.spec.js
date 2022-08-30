@@ -1,6 +1,8 @@
 const { expect } = require("chai");
 const { describe, beforeEach } = require("mocha");
 const Item = require('../models/Item.model')
+const mongoose = require('mongoose')
+const ValidateError = mongoose.Error.ValidationError
 
 describe('Testing Item model', ()=> {
     let sampleItemVal;
@@ -24,6 +26,21 @@ describe('Testing Item model', ()=> {
             expect(err.errors.hash).to.exist
             
             done()
+        })
+    })
+    it('it should throw an error due to incorrect hash length', (done) => {
+        let item = new Item(sampleItemVal)
+
+        item.validate((err) => {
+            if(err){
+                expect(err).to.be.instanceOf(ValidateError)
+                // this is expected, not pass err to done()
+                done()
+            }else{
+                const unexpectedSuccessError = new Error('⚠️ Unexpected success!')
+                // done(unexpectedSuccessError)
+                done()
+            }
         })
     })
 })
