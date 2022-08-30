@@ -43,4 +43,20 @@ describe('Testing Item model', ()=> {
             }
         })
     })
+
+    it('it should create the item successfully with correct parameters', (done) => {
+        let item = new Item({
+            ...sampleItemVal,
+            hash: '1234567891'
+        })
+        item.validate((err) => {
+            if(err){
+                const unexpectedFailureError = new Error('⚠️ Unexpected failure!')
+                done(unexpectedFailureError)
+            }else{
+                expect(item.hash).to.equal('1234567891')
+                done()
+            }
+        })
+    })
 })
