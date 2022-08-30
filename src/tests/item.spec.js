@@ -94,7 +94,5 @@ describe('Testing /item endpoint', () => {
             expect(saveStub).to.have.been.calledOnce
             expect(result).to.equal(sampleUpdatedItemVal)
         })
-
-        
     })
 })
