@@ -3,13 +3,13 @@
 ## Bibliotecas auxiliares
 
 ### CHAI
-*Usado para deixar nosso código de forma mais expressiva e facilmente acessível para escrever assertções.*
+*Usado para deixar nosso código de forma mais expressiva e facilmente acessível para escrever asserções.*
 
 ### MOCHA
 *Usado para estruturar nossos testes, usando describe e it como principais métodos. Além disso, ele suporta cobertura de testes assíncronos.*
 
 ### SINON 
-*Bibliotéca que nos permite criar stubs, spies e mocks com qualquer framework de teste de unidade*
+*Biblioteca que nos permite criar stubs, spies e mocks com qualquer framework de teste de unidade*
 
 ### REWIRE
 *O rewire nos fornece funções de setter e getter para substituir as funções originais pelo que nós definimos*
@@ -19,11 +19,11 @@
 
 ### Before
 
-*É executado antes de todos os testes em um determinado describebloco*
+*É executado antes de todos os testes em um determinado describe bloco*
 
 ### BeforeEach
 
-*É executado antes de cada suíte de teste em um determinado describebloco*
+*É executado antes de cada suíte de teste em um determinado describe bloco*
 
 ### After
 
@@ -31,4 +31,4 @@
 
 ### AfterEach
 
-*É executado após cada suíte de teste em um determinado describebloco*
+*É executado após cada suíte de teste em um determinado describe bloco*
