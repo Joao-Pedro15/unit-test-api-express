@@ -12,3 +12,29 @@ const itemController = require('../controllers/item.controller')
 
 const sandbox = sinon.createSandbox()
 let app = rewire('../app')
+
+describe('Testing express app routes', () => {
+    afterEach(() => {
+        app = rewire('../app')
+        sandbox.restore()
+    })
+
+    describe('Testing /item route', () => {
+        let sampleItem, hash;
+
+        beforeEach(() => {
+            hash = '1234567891'
+            sampleItem = {
+                name: 'sample item',
+                price: 10,
+                rating: '5',
+                hash
+            }
+            sandbox.stub(itemController, 'readItem').resolves(sampleItem)
+            sandbox.stub(itemController, 'createItem').resolves(sampleItem)
+            sandbox.stub(itemController, 'updateItemHash').resolves(sampleItem)
+        })
+
+        
+    })
+})
