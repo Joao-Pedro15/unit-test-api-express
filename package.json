@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "test": "mocha ./src/tests/*.spec.js"
+    "test": "mocha ./src/tests/*.spec.js --exit"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "chai": "^4.3.6",
     "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
     "rewire": "^6.0.0",
     "sinon": "^14.0.0",
     "sinon-chai": "^3.7.0"
