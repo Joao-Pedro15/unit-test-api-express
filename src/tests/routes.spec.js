@@ -58,6 +58,10 @@ describe('Testing express app routes', () => {
             .expect(200)
             .end((err, response) => {
                 expect(response.body).to.have.property('message').to.equal('Item created successfully!')
+                expect(response.body).to.have.property('item').to.have.property('name').to.equal('sample item')
+                expect(response.body).to.have.property('item').to.have.property('price').to.equal(10)
+                expect(response.body).to.have.property('item').to.have.property('rating').to.equal('5')
+                expect(response.body).to.have.property('item').to.have.property('hash').to.equal(hash)
                 done(err)
             })
         })
