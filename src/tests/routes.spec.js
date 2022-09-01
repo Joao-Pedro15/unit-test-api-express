@@ -50,5 +50,16 @@ describe('Testing express app routes', () => {
                 done(err) // err is null in success scenario
             })
         })
+
+        it('POST / should successfully create a new item', (done) => {
+            request(app)
+            .post('/item/')
+            .send(sampleItem)
+            .expect(200)
+            .end((err, response) => {
+                expect(response.body).to.have.property('message').to.equal('Item created successfully!')
+                done(err)
+            })
+        })
     })
 })
