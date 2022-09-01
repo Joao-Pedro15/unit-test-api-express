@@ -43,9 +43,22 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.put('/test', async (req, res) => {
-    const result = await itemController.updateItemHash('1233445894')
-    return res.json(result)
+router.put('/', async (req, res) => {
+    try {
+        const { hash } = req.body
+        const item = await itemController.updateItemHash(hash)
+        res.json({
+            item,
+            status: 200,
+            message: 'Item updated successfully!'
+        })
+    } catch (err) {
+        res.json({
+            item: null,
+            status: err.code || err.statusCode || 500,
+            message: err.message || 'Something went wrong while updating item hash'
+        })
+    }
 })
 
 module.exports = router
