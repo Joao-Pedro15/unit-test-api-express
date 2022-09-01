@@ -25,6 +25,24 @@ router.get('/test', async (req, res) => {
     return res.json(result)
 })
 
+router.post('/', async (req, res) => {
+    try {
+        const { name, rating, price, hash } = req.body
+        const item = await itemController.createItem({name, rating, price, hash})
+        res.json({
+            item,
+            status: 200,
+            message: 'Item created successfully!'
+        })
+    } catch (err) {
+        res.json({
+            item: null,
+            status: err.code || err.statusCode || 500,
+            message: err.message || 'Something went wrong while creating new item!'
+        })
+    }
+})
+
 router.put('/test', async (req, res) => {
     const result = await itemController.updateItemHash('1233445894')
     return res.json(result)
