@@ -65,5 +65,15 @@ describe('Testing express app routes', () => {
                 done(err)
             })
         })
+        it('PUT / should successfully update hash for a given item', (done) => {
+            request(app).put('/item/')
+            .send(hash)
+            .expect(200)
+            .end((err, response) => {
+                expect(response.body).to.have.property('message').to.equal('Item updated successfully!')
+                expect(response.body)
+                done(err)
+            })
+        })
     })
 })
