@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "test": "mocha ./src/tests/*.spec.js --exit"
+    "test": "mocha ./src/tests/*.spec.js --exit",
+    "coverage": "nyc --reporter=text npm test"
   },
   "repository": {
     "type": "git",
